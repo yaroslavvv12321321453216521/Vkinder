@@ -30,7 +30,10 @@ def main():
                 if user_text == 'найти':
                     vk_bot_service.send_message(user_id=event.obj.message['from_id'], message='Ок, начинаем поиск...')
                     result_message = vk_service.search_people()
-                    vk_bot_service.send_message(user_id=event.obj.message['from_id'], message=result_message[0],
+
+                    if result_message:
+
+                        vk_bot_service.send_message(user_id=event.obj.message['from_id'], message=result_message[0],
                                                 attachments=result_message[1])
 
             else:
